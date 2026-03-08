@@ -1,14 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
-// FloatingHearts – pływające serca po całej stronie
+// Pływające serca po całym ekranie
 function FloatingHearts() {
   const hearts = useMemo(
     () =>
       Array.from({ length: 30 }).map((_, i) => ({
         id: i,
-        left: Math.random() * 100,  // procentowo od lewej krawędzi ekranu
-        top: Math.random() * 100,   // procentowo od góry ekranu
+        left: Math.random() * 100,
+        top: Math.random() * 100,
         delay: Math.random() * 5,
         duration: 6 + Math.random() * 6,
         size: 18 + Math.random() * 24,
@@ -24,6 +24,7 @@ function FloatingHearts() {
           initial={{ y: `${h.top}vh`, opacity: 0 }}
           animate={{ y: '-10vh', opacity: [0, 1, 1, 0] }}
           transition={{ duration: h.duration, delay: h.delay, repeat: Infinity, ease: 'linear' }}
+          className="heart"
           style={{ position: 'absolute', left: `${h.left}%`, fontSize: h.size }}
         >
           ❤️
@@ -33,12 +34,15 @@ function FloatingHearts() {
   );
 }
 
-// Card3D – obracająca się kartka
+// Kartka 3D
 function Card3D({ name, message }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ perspective: 2000, width: 400, height: 500, cursor: 'pointer' }} onClick={() => setOpen(!open)}>
+    <div
+      style={{ perspective: 2000, width: '90vw', maxWidth: '400px', height: '60vh', maxHeight: '500px', cursor: 'pointer' }}
+      onClick={() => setOpen(!open)}
+    >
       <motion.div
         animate={{ rotateY: open ? -160 : 0 }}
         transition={{ duration: 1 }}
@@ -59,7 +63,7 @@ function Card3D({ name, message }) {
             alignItems: 'center',
           }}
         >
-          <h1 style={{ fontSize: '3rem', color: '#fff' }}>{name}</h1>
+          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#fff' }}>{name}</h1>
         </div>
 
         {/* back */}
@@ -118,7 +122,7 @@ export default function App() {
   const messages = {
     Luiza: 'Mamo w tym dniu chciałbym życzyć Ci wszystkiego co najlepsze z okazji twojego święta!',
     Monika: 'Monika z okazji dnia kobiet życze Ci wszystkiego co najlepsze i żebyś więcej się uśmiechała bo tak wyglądasz znacznie lepiej!',
-    Zuzia: 'Zuzia, chciałem Ci powiedzieć, że jesteś bardzo łądna i naprawdę dorze sie z Tobą rozmawia i może kiedyś moglibyśmy też pogadać poza pracą! Wszystkiego najlepszego z okazji Dnia Kobiet!',
+    Zuzia: 'Zuzia, chciałem Ci powiedzieć, że jesteś bardzo ładna i naprawdę dorze sie z Tobą rozmawia i może kiedyś moglibyśmy też pogadać poza pracą! Wszystkiego najlepszego z okazji Dnia Kobiet!',
     Weronika: 'Weronika życzę ci wszystkeigo najlepszego z okazji Dnia Kobiet i trzeba by sie spotkać, w końcu gdzieś wyskoczyć!',
     Wiktoria: 'Wiktoria naprawdę dobrze się z Tobą ostatnio gadało i trzeba powtórzyć te rundki! Wszystkiego najlepszego z okazji Dnia Kobiet!',
     Henryka: 'Babciu życzę ci dużo zdrowia i uśmiechu z okazji Dnia Kobiet!',
@@ -130,12 +134,21 @@ export default function App() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', width: '100vw' }}>
-      {/* Floating Hearts – absolutnie względem całego ekranu */}
       {heartsMode && <FloatingHearts />}
-
-      {/* Wrapper na nagłówek i kartkę, centrowanie */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', zIndex: 1, position: 'relative' }}>
-        <h1 style={{ fontSize: '4rem', marginBottom: '40px', color: '#fff' }}>{name}</h1>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          zIndex: 1,
+          position: 'relative',
+          padding: '20px',
+          boxSizing: 'border-box',
+        }}
+      >
+        <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', marginBottom: '40px', color: '#fff' }}>{name}</h1>
         <Card3D name={name} message={messages[name] || defaultMessage} />
       </div>
     </div>
