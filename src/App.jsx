@@ -123,7 +123,7 @@ export default function App() {
     Luiza: 'Mamo w tym dniu chciałbym życzyć Ci wszystkiego co najlepsze z okazji twojego święta!',
     Monika: 'Monika z okazji dnia kobiet życze Ci wszystkiego co najlepsze i żebyś więcej się uśmiechała bo tak wyglądasz znacznie lepiej!',
     Zuzia: 'Zuzia, chciałem Ci powiedzieć, że jesteś bardzo ładna i naprawdę dorze sie z Tobą rozmawia i może kiedyś moglibyśmy też pogadać poza pracą! Wszystkiego najlepszego z okazji Dnia Kobiet!',
-    Weronika: 'Weronika życzę ci wszystkeigo najlepszego z okazji Dnia Kobiet i trzeba by sie spotkać, w końcu gdzieś wyskoczyć!',
+    Weronika: 'Weronika życzę ci wszystkiego najlepszego z okazji Dnia Kobiet i trzeba by sie spotkać, w końcu gdzieś wyskoczyć!',
     Wiktoria: 'Wiktoria naprawdę dobrze się z Tobą ostatnio gadało i trzeba powtórzyć te rundki! Wszystkiego najlepszego z okazji Dnia Kobiet!',
     Henryka: 'Babciu życzę ci dużo zdrowia i uśmiechu z okazji Dnia Kobiet!',
     Kinga: 'Kinga, Wszystkiego Najlepszego z Okazji Dnia Kobiet!',
